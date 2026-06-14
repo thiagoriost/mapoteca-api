@@ -1,19 +1,10 @@
-import {
-  ValidationPipe
-} from '@nestjs/common';
+import { ValidationPipe } from '@nestjs/common';
 
-import {
-  NestFactory
-} from '@nestjs/core';
+import { NestFactory } from '@nestjs/core';
 
-import {
-  SwaggerModule,
-  DocumentBuilder
-} from '@nestjs/swagger';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
-import {
-  AppModule
-} from './app.module';
+import { AppModule } from './app.module';
 
 /**
  * Punto de entrada de la aplicación.
@@ -29,28 +20,20 @@ import {
  * @since 2026-06-11
  */
 async function bootstrap() {
-
-  const app =
-    await NestFactory.create(
-      AppModule
-    );
+  const app = await NestFactory.create(AppModule);
 
   /**
    * Habilita validaciones globales
    * para DTOs.
    */
   app.useGlobalPipes(
-
     new ValidationPipe({
-
       whitelist: true,
 
       forbidNonWhitelisted: true,
 
-      transform: true
-
-    })
-
+      transform: true,
+    }),
   );
 
   /**
@@ -62,58 +45,37 @@ async function bootstrap() {
   /**
    * Configuración de Swagger.
    */
-  const swaggerConfig =
+  const swaggerConfig = new DocumentBuilder()
 
-    new DocumentBuilder()
+    .setTitle('Mapoteca API')
 
-      .setTitle(
-        'Mapoteca API'
-      )
+    .setDescription('API de consulta documental Mapoteca')
 
-      .setDescription(
-        'API de consulta documental Mapoteca'
-      )
+    .setVersion('1.0.0')
 
-      .setVersion(
-        '1.0.0'
-      )
+    .addBearerAuth()
 
-      .addBearerAuth()
+    .build();
 
-      .build();
+  const document = SwaggerModule.createDocument(
+    app,
 
-  const document =
-
-    SwaggerModule.createDocument(
-
-      app,
-
-      swaggerConfig
-
-    );
+    swaggerConfig,
+  );
 
   SwaggerModule.setup(
-
     'swagger',
 
     app,
 
-    document
-
+    document,
   );
 
-  const port =
+  const port = process.env.PORT ?? 3000;
 
-    process.env.PORT ?? 3000;
+  await app.listen(port);
 
-  await app.listen(
-    port
-  );
-
-  console.log(
-    `Mapoteca API ejecutándose en puerto ${port}`
-  );
-
+  console.log(`Mapoteca API ejecutándose en puerto ${port}`);
 }
 
 bootstrap();

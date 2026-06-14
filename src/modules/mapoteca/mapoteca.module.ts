@@ -1,26 +1,14 @@
-import {
-  Module
-} from '@nestjs/common';
+import { Module } from '@nestjs/common';
 
-import {
-  HttpModule
-} from '@nestjs/axios';
+import { HttpModule } from '@nestjs/axios';
 
-import {
-  MapotecaController
-} from './controllers/mapoteca/mapoteca.controller';
+import { MapotecaController } from './controllers/mapoteca/mapoteca.controller';
 
-import {
-  MapotecaService
-} from './services/mapoteca/mapoteca.service';
+import { MapotecaService } from './services/mapoteca/mapoteca.service';
 
-import {
-  DirectusService
-} from './services/directus/directus.service';
+import { DirectusService } from './services/directus/directus.service';
 
-import {
-  DirectusConfig
-} from '../../config/directus.config';
+import { DirectusConfig } from '../../config/directus.config';
 
 /**
  * Módulo funcional de Mapoteca.
@@ -35,26 +23,16 @@ import {
  * @since 2026-06-11
  */
 @Module({
-
   imports: [
-
     /**
      * Cliente HTTP utilizado para
      * la integración con Directus.
      */
-    HttpModule
-
+    HttpModule,
   ],
 
-  controllers: [
-    MapotecaController
-  ],
+  controllers: [MapotecaController],
 
-  providers: [
-    MapotecaService,
-    DirectusService,
-    DirectusConfig
-  ]
-
+  providers: [MapotecaService, DirectusService, DirectusConfig],
 })
 export class MapotecaModule {}
