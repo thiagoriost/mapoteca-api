@@ -1,14 +1,8 @@
-import {
-  Module
-} from '@nestjs/common';
+import { Module } from '@nestjs/common';
 
-import {
-  ConfigModule
-} from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 
-import {
-  MapotecaModule
-} from './modules/mapoteca/mapoteca.module';
+import { MapotecaModule } from './modules/mapoteca/mapoteca.module';
 
 /**
  * Módulo raíz de la aplicación.
@@ -23,27 +17,21 @@ import {
  * @since 2026-06-11
  */
 @Module({
-
   imports: [
-
     /**
      * Carga variables de entorno
      * desde el archivo .env
      * y las expone globalmente.
      */
     ConfigModule.forRoot({
-
-      isGlobal: true
-
+      isGlobal: true,
     }),
 
     /**
      * Módulo funcional encargado
      * de la gestión de la Mapoteca.
      */
-    MapotecaModule
-
-  ]
-
+    MapotecaModule,
+  ],
 })
 export class AppModule {}
