@@ -1,45 +1,20 @@
-import {
-  Controller,
-  Get,
-  Param,
-  Query,
-  Res
-} from '@nestjs/common';
+import { Controller, Get, Param, Query, Res } from '@nestjs/common';
 
-import type  {
-  Response
-} from 'express';
+import type { Response } from 'express';
 
-import {
-  ApiOperation,
-  ApiQuery,
-  ApiResponse,
-  ApiTags
-} from '@nestjs/swagger';
+import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 
-import {
-  MapotecaService
-} from '../../services/mapoteca/mapoteca.service';
+import { MapotecaService } from '../../services/mapoteca/mapoteca.service';
 
-import {
-  TematicaResponseDto
-} from '../../dto/response/tematica-response.dto';
+import { TematicaResponseDto } from '../../dto/response/tematica-response.dto';
 
-import {
-  DocumentoResponseDto
-} from '../../dto/response/documento-response.dto';
+// import { DocumentoResponseDto } from '../../dto/response/documento-response.dto';
 
-import {
-  DocumentoDetalleResponseDto
-} from '../../dto/response/documento-detalle-response.dto';
+import { DocumentoDetalleResponseDto } from '../../dto/response/documento-detalle-response.dto';
 
-import {
-  DocumentoFilterDto
-} from '../../dto/request/documento-filter.dto';
+import { DocumentoFilterDto } from '../../dto/request/documento-filter.dto';
 
-import {
-   PagedDocumentoResponseDto
-} from '../../dto/response/paged-documento-response.dto';
+import { PagedDocumentoResponseDto } from '../../dto/response/paged-documento-response.dto';
 
 /**
  * Controlador encargado de exponer
@@ -57,11 +32,7 @@ import {
 @ApiTags('Mapoteca')
 @Controller('api/v1/mapoteca')
 export class MapotecaController {
-
-  constructor(
-    private readonly mapotecaService:
-      MapotecaService
-  ) {}
+  constructor(private readonly mapotecaService: MapotecaService) {}
 
   /**
    * Obtiene las temáticas registradas
@@ -73,25 +44,20 @@ export class MapotecaController {
   @ApiOperation({
     summary: 'Consultar temáticas',
     description:
-      'Obtiene las temáticas registradas en la carpeta principal de la Mapoteca.'
+      'Obtiene las temáticas registradas en la carpeta principal de la Mapoteca.',
   })
   @ApiResponse({
     status: 200,
     description: 'Consulta exitosa.',
     type: TematicaResponseDto,
-    isArray: true
+    isArray: true,
   })
   @ApiResponse({
     status: 404,
-    description:
-      'No se encontró la carpeta principal de la Mapoteca.'
+    description: 'No se encontró la carpeta principal de la Mapoteca.',
   })
-  async obtenerTematicas():
-    Promise<TematicaResponseDto[]> {
-
-    return this.mapotecaService
-      .obtenerTematicas();
-
+  async obtenerTematicas(): Promise<TematicaResponseDto[]> {
+    return this.mapotecaService.obtenerTematicas();
   }
 
   /**
@@ -113,86 +79,74 @@ export class MapotecaController {
   @ApiOperation({
     summary: 'Consultar documentos',
     description:
-      'Obtiene documentos de la Mapoteca aplicando filtros opcionales.'
+      'Obtiene documentos de la Mapoteca aplicando filtros opcionales.',
   })
   @ApiQuery({
     name: 'tematica',
     required: false,
     type: String,
     description: 'Nombre de la temática.',
-    example: 'Agropecuario'
+    example: 'Agropecuario',
   })
   @ApiQuery({
     name: 'nombre',
     required: false,
     type: String,
-    description:
-      'Texto a buscar en el título o nombre del archivo.',
-    example: 'opiac'
+    description: 'Texto a buscar en el título o nombre del archivo.',
+    example: 'opiac',
   })
   @ApiQuery({
     name: 'tipo',
     required: false,
     type: String,
     description: 'Tipo MIME del documento.',
-    example: 'application/pdf'
+    example: 'application/pdf',
   })
   @ApiQuery({
     name: 'anio',
     required: false,
     type: Number,
     description: 'Año de carga del docuemento.',
-    example: 2026
+    example: 2026,
   })
-
   @ApiQuery({
     name: 'page',
     required: false,
     type: Number,
     description: 'Número de página.',
-    example: 1
+    example: 1,
   })
   @ApiQuery({
     name: 'size',
     required: false,
     type: Number,
-    description:
-      'Cantidad de registros por página.',
-    example: 10
+    description: 'Cantidad de registros por página.',
+    example: 10,
   })
   @ApiQuery({
     name: 'sort',
     required: false,
     type: String,
-    description:
-      'Campo utilizado para ordenar los resultados.',
-    example: 'titulo'
+    description: 'Campo utilizado para ordenar los resultados.',
+    example: 'titulo',
   })
   @ApiQuery({
     name: 'direction',
     required: false,
     type: String,
-    description:
-      'Dirección del ordenamiento.',
-    example: 'asc'
+    description: 'Dirección del ordenamiento.',
+    example: 'asc',
   })
   @ApiResponse({
     status: 200,
     description: 'Consulta exitosa.',
-    type: PagedDocumentoResponseDto 
+    type: PagedDocumentoResponseDto,
   })
   async obtenerDocumentos(
-
     @Query()
-    filters: DocumentoFilterDto
-
+    filters: DocumentoFilterDto,
   ): Promise<PagedDocumentoResponseDto> {
-
-    return this.mapotecaService
-      .obtenerDocumentos(
-        filters
-      );
-
+    return this.mapotecaService.obtenerDocumentos(filters);
   }
 
   /**
@@ -206,33 +160,24 @@ export class MapotecaController {
    */
   @Get('documentos/:id')
   @ApiOperation({
-    summary:
-      'Consultar documento por identificador',
+    summary: 'Consultar documento por identificador',
     description:
-      'Obtiene la información detallada de un documento específico de la Mapoteca.'
+      'Obtiene la información detallada de un documento específico de la Mapoteca.',
   })
   @ApiResponse({
     status: 200,
     description: 'Consulta exitosa.',
-    type: DocumentoDetalleResponseDto
+    type: DocumentoDetalleResponseDto,
   })
   @ApiResponse({
     status: 404,
-    description:
-      'No se encontró el documento solicitado.'
+    description: 'No se encontró el documento solicitado.',
   })
   async obtenerDocumentoPorId(
-
     @Param('id')
-    id: string
-
+    id: string,
   ): Promise<DocumentoDetalleResponseDto> {
-
-    return this.mapotecaService
-      .obtenerDocumentoPorId(
-        id
-      );
-
+    return this.mapotecaService.obtenerDocumentoPorId(id);
   }
 
   /**
@@ -249,39 +194,26 @@ export class MapotecaController {
   @Get('documentos/:id/descargar')
   @ApiResponse({
     status: 302,
-    description:
-      'Redirección hacia la descarga del documento.'
+    description: 'Redirección hacia la descarga del documento.',
   })
   @ApiOperation({
     summary: 'Descargar documento',
     description:
-      'Redirecciona al recurso almacenado en Directus. Swagger UI puede mostrar errores CORS al probar este endpoint debido a la naturaleza de la redirección HTTP.'
-})
+      'Redirecciona al recurso almacenado en Directus. Swagger UI puede mostrar errores CORS al probar este endpoint debido a la naturaleza de la redirección HTTP.',
+  })
   @ApiResponse({
     status: 404,
-    description:
-      'No se encontró el documento solicitado.'
+    description: 'No se encontró el documento solicitado.',
   })
   async descargarDocumento(
-
     @Param('id')
     id: string,
 
     @Res()
-    response: Response
-
+    response: Response,
   ): Promise<void> {
+    const downloadUrl = await this.mapotecaService.obtenerUrlDescarga(id);
 
-    const downloadUrl =
-      await this.mapotecaService
-        .obtenerUrlDescarga(
-          id
-        );
-
-    response.redirect(
-      downloadUrl
-    );
-
+    response.redirect(downloadUrl);
   }
-
 }

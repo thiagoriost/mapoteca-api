@@ -9,10 +9,8 @@
  * @since 2026-06-11
  */
 export class DirectusResponse<T> {
-
   /**
    * Información retornada por Directus.
    */
   data!: T;
-
 }

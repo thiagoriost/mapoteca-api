@@ -10,7 +10,6 @@
  * @since 2026-06-11
  */
 export class DirectusFile {
-
   /**
    * Identificador único del archivo.
    */
@@ -54,5 +53,4 @@ export class DirectusFile {
    * en formato ISO 8601.
    */
   uploaded_on!: string;
-
 }

@@ -10,7 +10,6 @@
  * @since 2026-06-11
  */
 export class DirectusFolder {
-
   /**
    * Identificador único de la carpeta.
    */
@@ -28,5 +27,4 @@ export class DirectusFolder {
    * a una carpeta raíz.
    */
   parent?: string | null;
-
 }

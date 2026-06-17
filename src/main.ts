@@ -20,7 +20,7 @@ import { AppModule } from './app.module';
  * @since 2026-06-11
  */
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule); // Crear instancia de NestJS con el módulo raíz
 
   /**
    * Habilita validaciones globales
@@ -71,11 +71,11 @@ async function bootstrap() {
     document,
   );
 
-  const port = process.env.PORT ?? 3000;
+  const port = process.env.PORT ?? 3000; // Puerto configurable desde variables de entorno
 
-  await app.listen(port);
+  await app.listen(port); // Iniciar servidor HTTP en el puerto configurado
 
   console.log(`Mapoteca API ejecutándose en puerto ${port}`);
 }
 
-bootstrap();
+void bootstrap();
