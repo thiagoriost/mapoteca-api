@@ -1,18 +1,8 @@
-import {
-  ApiPropertyOptional
-} from '@nestjs/swagger';
+import { ApiPropertyOptional } from '@nestjs/swagger';
 
-import {
-  Type
-} from 'class-transformer';
+import { Type } from 'class-transformer';
 
-import {
-  IsInt,
-  IsOptional,
-  IsString,
-  Max,
-  Min
-} from 'class-validator';
+import { IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
 
 /**
  * DTO de filtros para la consulta
@@ -28,15 +18,12 @@ import {
  * @since 2026-06-11
  */
 export class DocumentoFilterDto {
-
   /**
    * Nombre de la temática.
    */
   @ApiPropertyOptional({
-    description:
-      'Nombre de la temática.',
-    example:
-      'Agropecuario'
+    description: 'Nombre de la temática.',
+    example: 'Agropecuario',
   })
   @IsOptional()
   @IsString()
@@ -47,10 +34,8 @@ export class DocumentoFilterDto {
    * o título del documento.
    */
   @ApiPropertyOptional({
-    description:
-      'Nombre o texto a buscar.',
-    example:
-      'opiac'
+    description: 'Nombre o texto a buscar.',
+    example: 'opiac',
   })
   @IsOptional()
   @IsString()
@@ -60,10 +45,8 @@ export class DocumentoFilterDto {
    * Tipo MIME del documento.
    */
   @ApiPropertyOptional({
-    description:
-      'Tipo MIME del documento.',
-    example:
-      'application/pdf'
+    description: 'Tipo MIME del documento.',
+    example: 'application/pdf',
   })
   @IsOptional()
   @IsString()
@@ -73,9 +56,8 @@ export class DocumentoFilterDto {
    * Año de carga del documento.
    */
   @ApiPropertyOptional({
-    description:
-      'Año de carga del documento.',
-    example: 2026
+    description: 'Año de carga del documento.',
+    example: 2026,
   })
   @IsOptional()
   @Type(() => Number)
@@ -89,11 +71,10 @@ export class DocumentoFilterDto {
    * Valor por defecto: 1
    */
   @ApiPropertyOptional({
-    description:
-      'Número de página.',
+    description: 'Número de página.',
     example: 1,
     default: 1,
-    minimum: 1
+    minimum: 1,
   })
   @IsOptional()
   @Type(() => Number)
@@ -108,12 +89,11 @@ export class DocumentoFilterDto {
    * Valor máximo: 100
    */
   @ApiPropertyOptional({
-    description:
-      'Cantidad de registros por página.',
+    description: 'Cantidad de registros por página.',
     example: 10,
     default: 10,
     minimum: 1,
-    maximum: 100
+    maximum: 100,
   })
   @IsOptional()
   @Type(() => Number)
@@ -133,10 +113,8 @@ export class DocumentoFilterDto {
    * - tamano
    */
   @ApiPropertyOptional({
-    description:
-      'Campo utilizado para ordenar los resultados.',
-    example:
-      'titulo'
+    description: 'Campo utilizado para ordenar los resultados.',
+    example: 'titulo',
   })
   @IsOptional()
   @IsString()
@@ -150,13 +128,10 @@ export class DocumentoFilterDto {
    * - desc
    */
   @ApiPropertyOptional({
-    description:
-      'Dirección del ordenamiento.',
-    example:
-      'asc'
+    description: 'Dirección del ordenamiento.',
+    example: 'asc',
   })
   @IsOptional()
   @IsString()
   direction?: string;
-
 }

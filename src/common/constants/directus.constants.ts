@@ -10,7 +10,6 @@
  * @since 2026-06-11
  */
 export const DIRECTUS_ENDPOINTS = {
-
   /**
    * Gestión de carpetas.
    */
@@ -34,6 +33,5 @@ export const DIRECTUS_ENDPOINTS = {
   /**
    * Renovación de token.
    */
-  REFRESH: '/auth/refresh'
-
+  REFRESH: '/auth/refresh',
 } as const;

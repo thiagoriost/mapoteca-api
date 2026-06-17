@@ -1,6 +1,4 @@
-import {
-  ApiProperty
-} from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 
 /**
  * DTO base utilizado para estandarizar
@@ -12,13 +10,12 @@ import {
  * @since 2026-06-11
  */
 export class ApiResponseDto<T> {
-
   /**
    * Indica si la operación fue exitosa.
    */
   @ApiProperty({
     description: 'Indica si la operación fue exitosa.',
-    example: true
+    example: true,
   })
   success!: boolean;
 
@@ -26,7 +23,7 @@ export class ApiResponseDto<T> {
    * Datos retornados por la operación.
    */
   @ApiProperty({
-    description: 'Datos retornados por la operación.'
+    description: 'Datos retornados por la operación.',
   })
   data!: T;
 
@@ -36,8 +33,7 @@ export class ApiResponseDto<T> {
    */
   @ApiProperty({
     description: 'Fecha y hora de generación de la respuesta.',
-    example: '2026-06-04T15:30:00.000Z'
+    example: '2026-06-04T15:30:00.000Z',
   })
   timestamp!: string;
-
 }

@@ -1,6 +1,4 @@
-import {
-  ApiProperty
-} from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 
 /**
  * DTO de respuesta para documentos
@@ -10,15 +8,12 @@ import {
  * @since 2026-06-11
  */
 export class DocumentoResponseDto {
-
   /**
    * Identificador único del documento.
    */
   @ApiProperty({
-    description:
-      'Identificador único del documento.',
-    example:
-      '7ae225e9-378b-47cb-b6db-10b637f8ae44'
+    description: 'Identificador único del documento.',
+    example: '7ae225e9-378b-47cb-b6db-10b637f8ae44',
   })
   id!: string;
 
@@ -26,10 +21,8 @@ export class DocumentoResponseDto {
    * Título del documento.
    */
   @ApiProperty({
-    description:
-      'Título del documento.',
-    example:
-      'Sig Opiac I Fbd Admin Geoportal V 1.0 05022026'
+    description: 'Título del documento.',
+    example: 'Sig Opiac I Fbd Admin Geoportal V 1.0 05022026',
   })
   titulo!: string;
 
@@ -37,10 +30,8 @@ export class DocumentoResponseDto {
    * Nombre original del archivo.
    */
   @ApiProperty({
-    description:
-      'Nombre original del archivo.',
-    example:
-      'SIG_OPIAC_I_FBD_AdminGeoportal_V_1.0_05022026.pdf'
+    description: 'Nombre original del archivo.',
+    example: 'SIG_OPIAC_I_FBD_AdminGeoportal_V_1.0_05022026.pdf',
   })
   nombreArchivo!: string;
 
@@ -48,10 +39,8 @@ export class DocumentoResponseDto {
    * Tipo MIME del documento.
    */
   @ApiProperty({
-    description:
-      'Tipo MIME del documento.',
-    example:
-      'application/pdf'
+    description: 'Tipo MIME del documento.',
+    example: 'application/pdf',
   })
   tipo!: string;
 
@@ -59,10 +48,8 @@ export class DocumentoResponseDto {
    * Tamaño del archivo expresado en bytes.
    */
   @ApiProperty({
-    description:
-      'Tamaño del archivo expresado en bytes.',
-    example:
-      164503
+    description: 'Tamaño del archivo expresado en bytes.',
+    example: 164503,
   })
   tamano!: number;
 
@@ -70,10 +57,8 @@ export class DocumentoResponseDto {
    * Nombre de la temática asociada.
    */
   @ApiProperty({
-    description:
-      'Nombre de la temática asociada.',
-    example:
-      'Agropecuario'
+    description: 'Nombre de la temática asociada.',
+    example: 'Agropecuario',
   })
   tematica!: string;
 
@@ -81,10 +66,8 @@ export class DocumentoResponseDto {
    * Fecha de carga del documento.
    */
   @ApiProperty({
-    description:
-      'Fecha y hora de carga del documento en formato ISO 8601.',
-    example:
-      '2026-05-27T15:35:40.678Z'
+    description: 'Fecha y hora de carga del documento en formato ISO 8601.',
+    example: '2026-05-27T15:35:40.678Z',
   })
   fechaCarga!: string;
 
@@ -92,11 +75,8 @@ export class DocumentoResponseDto {
    * Indica si el documento puede imprimirse.
    */
   @ApiProperty({
-    description:
-      'Indica si el documento admite impresión.',
-    example:
-      true
+    description: 'Indica si el documento admite impresión.',
+    example: true,
   })
   imprimible!: boolean;
-
 }

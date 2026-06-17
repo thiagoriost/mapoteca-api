@@ -10,7 +10,6 @@
  * @since 2026-06-11
  */
 export const MAPOTECA_CONSTANTS = {
-
   /**
    * Nombre de la carpeta principal
    * de la Mapoteca en Directus.
@@ -22,7 +21,6 @@ export const MAPOTECA_CONSTANTS = {
    * operaciones de impresión.
    */
   PRINTABLE_TYPES: [
-
     'application/pdf',
 
     'image/jpeg',
@@ -31,8 +29,6 @@ export const MAPOTECA_CONSTANTS = {
 
     'image/png',
 
-    'image/tiff'
-
-  ]
-
+    'image/tiff',
+  ],
 } as const;

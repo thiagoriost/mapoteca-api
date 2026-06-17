@@ -1,10 +1,6 @@
-import {
-  ApiProperty
-} from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 
-import {
-  DocumentoResponseDto
-} from './documento-response.dto';
+import { DocumentoResponseDto } from './documento-response.dto';
 
 /**
  * DTO de respuesta paginada
@@ -14,12 +10,11 @@ import {
  * @since 2026-06-11
  */
 export class PagedDocumentoResponseDto {
-
   /**
    * Página actual.
    */
   @ApiProperty({
-    example: 1
+    example: 1,
   })
   page!: number;
 
@@ -27,7 +22,7 @@ export class PagedDocumentoResponseDto {
    * Tamaño de página.
    */
   @ApiProperty({
-    example: 10
+    example: 10,
   })
   size!: number;
 
@@ -35,7 +30,7 @@ export class PagedDocumentoResponseDto {
    * Total de registros.
    */
   @ApiProperty({
-    example: 57
+    example: 57,
   })
   total!: number;
 
@@ -43,7 +38,7 @@ export class PagedDocumentoResponseDto {
    * Total de páginas.
    */
   @ApiProperty({
-    example: 6
+    example: 6,
   })
   totalPages!: number;
 
@@ -52,8 +47,7 @@ export class PagedDocumentoResponseDto {
    */
   @ApiProperty({
     type: DocumentoResponseDto,
-    isArray: true
+    isArray: true,
   })
   data!: DocumentoResponseDto[];
-
 }
