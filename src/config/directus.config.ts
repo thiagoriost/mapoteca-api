@@ -59,8 +59,10 @@ export class DirectusConfig {
    * @returns URL del asset.
    */
   getAssetUrl(documentId: string): string {
-    const assetUrl = `${this.url}${DIRECTUS_ENDPOINTS.ASSETS}/${encodeURIComponent(documentId)}`;
-    console.log('DirectusConfig', { assetUrl });
+    // const assetUrl = `${this.url}${DIRECTUS_ENDPOINTS.ASSETS}/${encodeURIComponent(documentId)}`;
+    // const assetUrl = `${DIRECTUS_ENDPOINTS.ASSETS}/${encodeURIComponent(documentId)}`;
+    const assetUrl = `http://172.19.3.26:18055/cms-sigquindio/assets/${encodeURIComponent(documentId)}`;
+    console.log('DirectusConfig (Ruta Relativa Segura)', { assetUrl });
     return assetUrl;
   }
 
@@ -75,8 +77,10 @@ export class DirectusConfig {
    * @returns URL de descarga.
    */
   getDownloadUrl(documentId: string): string {
-    const downloadUrl = `${this.url}${DIRECTUS_ENDPOINTS.ASSETS}/${encodeURIComponent(documentId)}?download`;
-    console.log('DirectusConfig', { downloadUrl });
+    // const downloadUrl = `${this.url}${DIRECTUS_ENDPOINTS.ASSETS}/${encodeURIComponent(documentId)}?download`;
+    // const downloadUrl = `${DIRECTUS_ENDPOINTS.ASSETS}/${encodeURIComponent(documentId)}?download`;
+    const downloadUrl = `${this.getAssetUrl(documentId)}?download`;
+    console.log('DirectusConfig (Descarga Relativa Segura)', { downloadUrl });
     return downloadUrl;
   }
 }
